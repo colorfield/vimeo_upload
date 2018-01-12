@@ -1,0 +1,6 @@
+vimeo_upload.video_upload_admin_settings:
+  title: 'Vimeo Upload'
+  route_name: vimeo_upload.video_upload_admin_settings
+  description: 'Manage Video Upload Settings'
+  parent: system.admin_config_services
+  weight: 99

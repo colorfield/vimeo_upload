@@ -1,8 +1,9 @@
 # Vimeo Upload
 
 Javascript based upload to get a video URL from Vimeo without having
-to upload it on Drupal first. The result URL can then be used with
-[Media Entity Vimeo](https://www.drupal.org/project/media_entity_vimeo).
+to upload it on Drupal first. The result URL can then be used with 
+[Video Embed Field](https://www.drupal.org/project/video_embed_field) 
+or [Media Entity Vimeo](https://www.drupal.org/project/media_entity_vimeo).
 
 **Work in progress**
 
@@ -44,3 +45,10 @@ following permissions: Public, Private, Edit, Upload.
 ### Drupal
 
 @todo WIP
+
+## Roadmap
+
+- Configuration form with access token encryption
+- Global admin UI for video upload
+- Per field form formatter for Video Embed Field
+- Per field form formatter for Media Entity Vimeo
