@@ -3,6 +3,8 @@
 namespace Drupal\vimeo_upload\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Class VimeoUploadController.
@@ -10,23 +12,37 @@ use Drupal\Core\Controller\ControllerBase;
 class VimeoUploadController extends ControllerBase {
 
   /**
-   * Upload.
+   * Vimeo upload.
    *
    * @return string
-   *   Return Hello string.
+   *   Return Vimeo Upload form driven by Javascript.
    */
   public function upload() {
-    $build['vimeo_upload'] = [
-      '#theme' => 'vimeo_upload',
-      '#attached' => [
-        'library' => [
-          'vimeo_upload/init',
+
+    $config = \Drupal::config('vimeo_upload.admin_settings');
+    if ($config->get('access_token') !== '') {
+      $build['vimeo_upload'] = [
+        '#theme' => 'vimeo_upload',
+        '#attached' => [
+          'library' => [
+            'vimeo_upload/init',
+          ],
+          'drupalSettings' => [
+          // @todo decrypt
+            'access_token' => $config->get('access_token'),
+          ],
         ],
-        'drupalSettings' => [
-          'access_token' => '...',
-        ],
-      ],
-    ];
+      ];
+    }
+    else {
+      $url = Url::fromRoute('vimeo_upload.video_upload_admin_settings');
+      $link = Link::fromTextAndUrl($this->t('configure it'), $url);
+      $link = $link->toRenderable();
+      $build['missing_access_token'] = [
+        '#markup' => $this->t('Missing access token, @configure_link.', ['@configure_link' => render($link)]),
+      ];
+    }
+
     return $build;
   }
 

@@ -43,6 +43,7 @@ class VimeoUploadAdminSettingsForm extends ConfigFormBase {
       '#maxlength' => 32,
       '#size' => 32,
       '#required' => TRUE,
+    // @todo decrypt
       '#default_value' => $config->get('access_token'),
     ];
     return parent::buildForm($form, $form_state);
@@ -53,8 +54,8 @@ class VimeoUploadAdminSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
-
     $this->config('vimeo_upload.admin_settings')
+    // @todo encrypt
       ->set('access_token', $form_state->getValue('access_token'))
       ->save();
   }
