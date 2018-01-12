@@ -24,7 +24,11 @@ Vimeo and go back to Drupal.
 `composer require drupal/vimeo_upload`
 
 2/ Download [this repository](https://github.com/websemantics/vimeo-upload)
-in the libraries directory
+in the libraries directory. 
+
+You can download it via Drush 
+
+`drush vimeo-upload-plugin` (or alias `drush vudl`) 
 
 So you have /web/libraries/vimeo-upload/vimeo-upload.js
 
@@ -44,7 +48,11 @@ following permissions: Public, Private, Edit, Upload.
 
 ### Drupal
 
-@todo WIP
+1. Go to the Vimeo Upload configuration page
+/admin/config/services/vimeo_upload and set your access token.
+2. Upload a video via /admin/vimeo_upload/upload
+
+Further integration with Video Embed Field and Media Entity Vimeo is on its way.
 
 ## Roadmap
 

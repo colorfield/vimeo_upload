@@ -1,0 +1,18 @@
+main:
+  remote: VIMEO_UPLOAD_LIBRARY_URI
+  license:
+    name: Apache 2.0
+    url: https://github.com/websemantics/vimeo-upload/blob/master/README.md
+    gpl-compatible: TRUE
+  js:
+    /libraries/vimeo-upload/vimeo-upload.js: { minified: FALSE }
+
+init:
+  version: VERSION
+  js:
+    vimeo_upload.init.js: {}
+  dependencies:
+    - vimeo_upload/main
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

@@ -7,3 +7,11 @@ vimeo_upload.video_upload_admin_settings:
     _permission: 'access administration pages'
   options:
     _admin_route: TRUE
+
+vimeo_upload.vimeo_upload_controller_upload:
+  path: '/admin/vimeo_upload/upload'
+  defaults:
+    _controller: '\Drupal\vimeo_upload\Controller\VimeoUploadController::upload'
+    _title: 'Vimeo Upload'
+  requirements:
+    _permission: 'access content'

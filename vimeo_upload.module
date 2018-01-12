@@ -8,6 +8,11 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Define the Vimeo Upload library location.
+ */
+define('VIMEO_UPLOAD_LIBRARY_URI', 'https://github.com/websemantics/vimeo-upload');
+
+/**
  * Implements hook_help().
  */
 function vimeo_upload_help($route_name, RouteMatchInterface $route_match) {
