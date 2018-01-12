@@ -16,10 +16,18 @@ class VimeoUploadController extends ControllerBase {
    *   Return Hello string.
    */
   public function upload() {
-    return [
-      '#type' => 'markup',
-      '#markup' => $this->t('Implement method: upload'),
+    $build['vimeo_upload'] = [
+      '#theme' => 'vimeo_upload',
+      '#attached' => [
+        'library' => [
+          'vimeo_upload/init',
+        ],
+        'drupalSettings' => [
+          'access_token' => '...',
+        ],
+      ],
     ];
+    return $build;
   }
 
 }

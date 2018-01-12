@@ -14,7 +14,7 @@ function vimeo_upload_requirements($phase) {
   // is to install the module and then use the drush command to get the library.
   $requirements = [];
   if ($phase == 'runtime') {
-    $requirements['vimeo_upload']['title'] = t('Vimeo Upload+ library');
+    $requirements['vimeo_upload']['title'] = t('Vimeo Upload library');
     $library = \Drupal::service('library.discovery')->getLibraryByName('vimeo_upload', 'main');
     $downloadMessage =
       t('Please download the Vimeo Upload library using "drush vimeo-upload-plugin" or from <a href="@link">@link</a>.', ['@link' => VIMEO_UPLOAD_LIBRARY_URI]);
