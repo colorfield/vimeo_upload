@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains vimeo_upload.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function vimeo_upload_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the vimeo_upload module.
+    case 'help.page.vimeo_upload':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Javascript based upload to get a video URL straight from Vimeo, without having to upload the file on Drupal first.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vimeo_upload_theme() {
+  return [
+    'vimeo_upload' => [
+      'render element' => 'children',
+    ],
+  ];
+}

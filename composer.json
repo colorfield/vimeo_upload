@@ -1,0 +1,14 @@
+{
+  "name": "drupal/vimeo_upload",
+  "type": "drupal-module",
+  "description": "Javascript based upload to get a video URL straight from Vimeo, without having to upload the file on Drupal first.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/vimeo_upload",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/vimeo_upload",
+    "source": "http://cgit.drupalcode.org/vimeo_upload"
+  },
+  "require": { }
+}
