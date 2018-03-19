@@ -10,5 +10,7 @@
     "issues": "https://www.drupal.org/project/issues/vimeo_upload",
     "source": "http://cgit.drupalcode.org/vimeo_upload"
   },
-  "require": { }
+  "require": {
+    "drupal/encrypt": "~3.0"
+  }
 }
