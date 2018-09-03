@@ -1,20 +1,30 @@
-.container {
+.vimeo-upload .container {
   width: auto;
   max-width: 680px;
   padding: 0 15px;
 }
 
-.container .text-muted {
+.vimeo-upload .container .text-muted {
   margin: 20px 0;
 }
 
-#progress-container {
+.vimeo-upload .form-control {
+  margin-bottom: 15px;
+  padding: 3px;
+}
+
+.vimeo-upload textarea {
+  width: 300px;
+  height: 150px;
+}
+
+.vimeo-upload #progress-container {
   -webkit-box-shadow: none;
-  box-shadow: inset none;
+  box-shadow: inset;
   display: none;
 }
 
-#drop_zone {
+.vimeo-upload #drop_zone {
   border: 2px dashed #bbb;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -26,7 +36,7 @@
   height: 140px;
 }
 
-#video-data {
+.vimeo-upload #video-data {
   margin-top: 1em;
   font-size: 1.1em;
   font-weight: 500;

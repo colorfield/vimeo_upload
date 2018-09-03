@@ -55,6 +55,7 @@
               console.log(pretty) /* echo server data */
             }
 
+            // @todo make it translatable
             showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>. Open the Console for the response details.')
           }
         })).upload()
