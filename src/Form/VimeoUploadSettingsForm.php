@@ -10,14 +10,14 @@ use Drupal\Core\Url;
 /**
  * Class VimeoUploadAdminSettingsForm.
  */
-class VimeoUploadAdminSettingsForm extends ConfigFormBase {
+class VimeoUploadSettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
     return [
-      'vimeo_upload.admin_settings',
+      'vimeo_upload.settings',
     ];
   }
 
@@ -25,14 +25,14 @@ class VimeoUploadAdminSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'video_upload_admin_settings';
+    return 'video_upload_settings';
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('vimeo_upload.admin_settings');
+    $config = $this->config('vimeo_upload.settings');
 
     $vimeo_api_url = Url::fromUri('https://developer.vimeo.com/apps', ['attributes' => ['target' => '_blank']]);
     $vimeo_api_link = Link::fromTextAndUrl(t('Vimeo developer dashboard'), $vimeo_api_url)->toString();
@@ -54,7 +54,7 @@ class VimeoUploadAdminSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
-    $this->config('vimeo_upload.admin_settings')
+    $this->config('vimeo_upload.settings')
     // @todo encrypt
       ->set('access_token', $form_state->getValue('access_token'))
       ->save();

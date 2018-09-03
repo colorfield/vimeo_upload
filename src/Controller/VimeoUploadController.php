@@ -19,7 +19,7 @@ class VimeoUploadController extends ControllerBase {
    */
   public function upload() {
 
-    $config = \Drupal::config('vimeo_upload.admin_settings');
+    $config = \Drupal::config('vimeo_upload.settings');
     if ($config->get('access_token') !== '') {
       $build['vimeo_upload'] = [
         '#theme' => 'vimeo_upload',
@@ -35,7 +35,7 @@ class VimeoUploadController extends ControllerBase {
       ];
     }
     else {
-      $url = Url::fromRoute('vimeo_upload.video_upload_admin_settings');
+      $url = Url::fromRoute('vimeo_upload.settings');
       $link = Link::fromTextAndUrl($this->t('configure it'), $url);
       $link = $link->toRenderable();
       $build['missing_access_token'] = [
