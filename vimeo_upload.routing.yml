@@ -4,7 +4,7 @@ vimeo_upload.settings:
     _form: '\Drupal\vimeo_upload\Form\VimeoUploadSettingsForm'
     _title: 'Vimeo Upload'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'administer vimeo upload'
   options:
     _admin_route: TRUE
 
@@ -14,4 +14,6 @@ vimeo_upload.upload:
     _controller: '\Drupal\vimeo_upload\Controller\VimeoUploadController::upload'
     _title: 'Vimeo Upload'
   requirements:
-    _permission: 'access content'
+    _permission: 'use vimeo upload'
+  options:
+    _admin_route: TRUE
