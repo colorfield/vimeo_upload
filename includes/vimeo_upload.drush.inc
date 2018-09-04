@@ -90,6 +90,9 @@ function drush_vimeo_upload_plugin($destination = NULL, $only_if_missing = FALSE
     $temp_library = $destination . '/' . array_shift($listing);
   } while (substr($temp_library, -1) != '/');
 
+  // Patch the API, see issue https://github.com/r-daneelolivaw/vimeo_upload/issues/1
+  // exec('patch -p1 < patches/issue-1-vimeo-api-version.patch');
+
   // Move to the correct location.
   drush_move_dir($temp_library, $library, TRUE);
 
