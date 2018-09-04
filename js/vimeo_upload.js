@@ -21,14 +21,18 @@
         var files = evt.dataTransfer ? evt.dataTransfer.files : $(this).get(0).files
         var results = document.getElementById('results')
 
-        /* Clear the results div */
+        // Clear the results div.
         while (results.hasChildNodes()) results.removeChild(results.firstChild)
+        // Clear the video Url and hide it.
+        var videoUrlInput = document.getElementById('videoUrl')
+        videoUrlInput.value = '';
+        videoUrlInput.style.display = 'none';
 
-        /* Rest the progress bar and show it */
+        // Rest the progress bar and show it.
         updateProgress(0)
         document.getElementById('progress-container').style.display = 'block'
 
-        /* Instantiate Vimeo Uploader */
+        // Instantiate Vimeo Uploader.
         ;(new VimeoUpload({
           name: document.getElementById('videoName').value,
           description: document.getElementById('videoDescription').value,
@@ -46,21 +50,35 @@
             var url = 'https://vimeo.com/' + videoId
 
             if (index > -1) {
-              /* The metadata contains all of the uploaded video(s) details see: https://developer.vimeo.com/api/endpoints/videos#/{video_id} */
+              // The metadata contains all of the uploaded video(s) details see:
+              // https://developer.vimeo.com/api/endpoints/videos#/{video_id}
               url = this.metadata[index].link //
 
-              /* add stringify the json object for displaying in a text area */
+              // Add stringify the json object for displaying in a text area.
               var pretty = JSON.stringify(this.metadata[index], null, 2)
 
               console.log(pretty) /* echo server data */
             }
 
+            // Display the success message and the video url.
             // @todo make it translatable
-            showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>. Open the Console for the response details.')
+            var successMessage = '<p><strong>Upload Successful</strong>.</p>';
+            if(document.getElementById('make_private').checked) {
+              successMessage += '<p>Note that this video has been set as private, so you must be logged in with the Vimeo channel account to view it.</p>';
+            }
+            successMessage += '<p>You can now copy the URL.</p>';
+            showMessage(successMessage);
+            videoUrlInput.value = url;
+            videoUrlInput.style.display = 'block';
           }
         })).upload()
 
-        /* local function: show a user message */
+        /**
+         * Shows a message.
+         *
+         * @param html
+         * @param type
+         */
         function showMessage(html, type) {
           /* hide progress bar */
           document.getElementById('progress-container').style.display = 'none'
@@ -75,6 +93,8 @@
 
       /**
        * Dragover handler to set the drop effect.
+       *
+       * @param evt
        */
       function handleDragOver(evt) {
         evt.stopPropagation()
@@ -83,7 +103,9 @@
       }
 
       /**
-       * Update progress bar.
+       * Update the progress bar.
+       *
+       * @param progress
        */
       function updateProgress(progress) {
         progress = Math.floor(progress * 100)
@@ -93,11 +115,12 @@
       }
 
       /**
-       * Wire up drag & drop listeners once page loads
+       * Wire up drag & drop listeners once page loads.
        */
       $(context).find('.vimeo-upload').once('vimeoUploadBehavior').each(function () {
         var dropZone = document.getElementById('drop_zone')
         var browse = document.getElementById('browse')
+        document.getElementById('videoUrl').style.display = 'none';
         dropZone.addEventListener('dragover', handleDragOver, false)
         dropZone.addEventListener('drop', handleFileSelect, false)
         browse.addEventListener('change', handleFileSelect, false)
