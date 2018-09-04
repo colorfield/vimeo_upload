@@ -4,7 +4,3 @@ description: Javascript based upload to get a video URL straight from Vimeo, wit
 core: 8.x
 configure: vimeo_upload.settings
 package: Custom
-
-# @todo use encrypt for access token
-# dependencies:
-#  - encrypt
