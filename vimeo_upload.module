@@ -49,7 +49,7 @@ function vimeo_upload_field_widget_video_embed_field_textfield_form_alter(&$elem
   // @todo improve this by uploading straight on the field widget
   // @todo pass then the Vimeo URL to the field value.
   $link = Link::createFromRoute(
-    t('Upload video'),
+    t('Upload on Vimeo'),
     'vimeo_upload.upload',
     [],
     [
