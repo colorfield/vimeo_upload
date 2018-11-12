@@ -8,6 +8,7 @@
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Serialization\Json;
 
 /**
  * Define the Vimeo Upload library location.
@@ -53,9 +54,23 @@ function vimeo_upload_field_widget_video_embed_field_textfield_form_alter(&$elem
     'vimeo_upload.upload',
     [],
     [
-      'attributes' => ['target' => '_blank'],
+      'attributes' => [
+        'class' => 'use-ajax',
+        'data-dialog-type' => 'modal',
+        'data-dialog-options' => Json::encode(
+          [
+            'height' => 400,
+            'width' => 480,
+          ]),
+      ],
+      'attached' => [
+        'library' => [
+          'core/drupal.dialog.ajax',
+        ],
+      ],
     ]);
   $link = $link->toRenderable();
+
   $element['vimeo_upload_link'] = [
     '#type' => 'item',
     '#markup' => \Drupal::service('renderer')->renderRoot($link),
