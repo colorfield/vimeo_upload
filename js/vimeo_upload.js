@@ -165,6 +165,7 @@
         $searchInputs.each(function() {
           if ($(this).val() === "") isValid = false;
         });
+
         isValid
           ? $nextButton.removeAttr("disabled")
           : $nextButton.attr("disabled", true);
@@ -220,11 +221,11 @@
       $(context)
         .find(".vimeo-upload__content")
         .once("vimeoUploadBehavior")
-        .each(() => {
+        .each(function() {
           const dropZone = document.getElementById("drop_zone");
           const browse = document.getElementById("browse");
 
-          $(".vimeo-upload__required").each(() => {
+          $(".vimeo-upload__required").each(function() {
             $(this).keyup(validateFormGroup);
             $(this).change(validateFormGroup);
           });
